@@ -25,7 +25,7 @@
 
         <section id="section2">
           <div class="intro__text">
-            I AM
+            IAM
             <em>FRONTEND</em>
             <span>DEVELOPER</span>
           </div>
@@ -33,7 +33,7 @@
         <section id="section3">
           <div class="profile"><img src="./assets/images/section3/myintro.jpg" alt="프로필사진"></div>
           <div class="profile__info">
-            <desc>안녕하세요  신입 웹  퍼블리셔 <em>김현빈</em> 입니다. 
+            <desc>안녕하세요.  신입 웹  퍼블리셔 <em>김현빈</em> 입니다.<br>   
               저는 디자인을 전공하였고 많은 흥미를 느꼈습니다. 하지만 웹에 있어 디자인만으로는 웹을 만드는것과 전혀 다르단걸 느끼고 코딩 공부를시작 했습니다. 
               디자인과 코딩을 배움으로써 디자이너와 퍼블리셔, 개발자 각각의 입장을 느끼는 동시에 두 분야가 나눠져 있지만 또 그렇지도 않다고 많이 느꼈습니다.
               저에게 있어 디자인과 코딩 둘 다 상상한것을 현실로 만드는 매력적인 일이라고 생각합니다.
@@ -41,7 +41,9 @@
               <p>Hello, I am Hyunbin Kim, a new web publisher.I majored in design and found it very interesting. However, I started studying coding because I felt that designing on the web is completely different from creating a web. By learning design and coding, I felt the position of designers, publishers, and developers, and at the same time, the two fields were divided, but I felt that it was not so.For me, I think both design and coding are fascinating jobs that make imagination a reality.</p>
           </div>
         </section>
-        <section id="section4">4</section>
+        <section id="section4">
+          <span class="textdeco">webstandard</span>
+        </section>
         <section id="section5">5</section>
         <section id="section6">6</section>
         <section id="section7">7</section>
@@ -49,10 +51,33 @@
     </div>
     <script type="module" src="/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+
     <script>
         const horizon = document.querySelector("#horizontality");
         const section = gsap.utils.toArray("#horizontality > section");
+        const lenis = new Lenis()
+
+        lenis.on('scroll', (e) => {
+        console.log(e)
+        })
+
+        function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+
+        let proxy = { skew: 0 },
+        skewSetter = gsap.quickSetter(".parallax__item__img", "skewY", "deg"), // fast
+        clamp = gsap.utils.clamp(-20, 20);
+        //ㅅ무스?
+
 
         gsap.to(section,{
             xPercent: -100 * (section.length - 1),
@@ -60,17 +85,17 @@
             scrollTrigger: {
                 trigger: horizon,
                 start: "top top",
-                end: () => "+=" + (horizon.offsetWidth - innerWidth),
+                end: () => "+=" + (horizon.offsetWidth),
                 pin: true,
                 anticipatePin:1,
                 scrub:1,
                 // snap : {
-                //     snapTo: 0.5/(section.length - 1),
-                //     inertoa: false,
+                //     snapTo: 1/(section.length - 1),
+                //     inertoa: true,
                 //     duration: {min:0.1, max: 0.1}
                 // },
-                invalidateOnRefresh: true
-
+                invalidateOnRefresh: true,
+                markers: true
             }
         })
 

@@ -50,6 +50,61 @@
     }
 }
 
-@media (max-width : 1200px) {
+@media (max-width: 600px) {
+    #section1 {
+        width: 50vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+        .intro__img {
+            position: relative; 
+            width: 50vw;
+            height: 70vh;
+            background-image: url(../images/section1/main_frist_img.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;   
+        }
+        .intro__desc {
+            text-align: right;
+            width: 30vw;
+            height: 40%;
+            margin-top: 3%;
+            font-size: 0.8em;
+        }
+        .portcircle {
+            font-family: "Cormorant Garamond";
+            text-align: center;
+            position: absolute; 
+            padding-top: 90px;       
+            left: 70%;
+            bottom: 20%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #000;
     
+            p {
+                margin-top: -28px;
+                color: #fff;
+                
+            }
+        }
+        .intro__edesc {
+            position: absolute;
+            left: 50%;
+            margin-top: -11%;
+            width: 100%;
+            bottom: 5%;
+            font-size: 0.5em;
+            p {
+                width: 40%;
+                float: right;
+                text-align: right;
+    
+            }
+            
+        }
+    }
 }
