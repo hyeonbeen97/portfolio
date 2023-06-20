@@ -1,0 +1,22 @@
+#section3 {
+    z-index: -1;
+    display: flex;
+    .profile {
+        width: 40%;
+        margin-left: 0%;
+    }
+    .profile__info {
+        margin: 30px 20px;
+        width: 50%;
+        desc {
+            text-align: left;
+            font-size: 2vw;
+        }
+        p { 
+            width: 80%;
+            margin-top: 30%;
+            text-align: left;
+            font-size: 1vw;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>김현빈 포트폴리오</title>
+    <script type="module" crossorigin src="/assets/index-cfd190d1.js"></script>
+    <link rel="stylesheet" href="/assets/index-f24d067f.css">
+  </head>
+  <style>
+    
+  </style>
+  <body>
+    <div id="wrap">
+      <main id="horizontality">
+        <section id="section1">
+          <div class="intro_img">
+            
+          </div>
+        </section>
+        <section id="section2">2</section>
+        <section id="section3"></section>
+        <section id="section4"></section>
+        <section id="section5"></section>
+        <section id="section6"></section>
+        <section id="section7"></section>
+      </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script>
+        const horizon = document.querySelector("#horizontality");
+        const section = gsap.utils.toArray("#horizontality > section");
+
+        gsap.to(section,{
+            xPercent: -100 * (section.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: horizon,
+                start: "top top",
+                end: () => "+=" + (horizon.offsetWidth - innerWidth),
+                pin: true,
+                anticipatePin:1,
+                scrub:1,
+                snap : {
+                    snapTo: 1/(section.length - 1),
+                    inertoa: false,
+                    duration: {min:0.1, max: 0.1}
+                },
+                invalidateOnRefresh: true
+
+            }
+        })
+
+    </script>
+    
+  </body>
+</html>

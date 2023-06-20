@@ -1,0 +1,17 @@
+body {
+    background-color: var(--color_body);
+}
+#horizontality {
+    width: 700%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+}
+#horizontality > section {
+    width: 100%;
+    height: 100vh;
+}
+#horizontality > #section1 {
+    width: 50%;
+    height: 100vh;
+}
