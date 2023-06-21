@@ -5,8 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>김현빈 포트폴리오</title>
-    <script type="module" crossorigin src="/assets/index-cfd190d1.js"></script>
-    <link rel="stylesheet" href="/assets/index-f24d067f.css">
+    <script type="module" crossorigin src="/assets/index-338d50f4.js"></script>
+    <link rel="stylesheet" href="/assets/index-36be6dbf.css">
   </head>
   <style>
     
@@ -15,24 +15,71 @@
     <div id="wrap">
       <main id="horizontality">
         <section id="section1">
-          <div class="intro_img">
-            
+          <div class="intro__img"></div>
+          <div class="intro__desc">
+           <p> 어떤 일이라도 노력하고 즐기면  그 결과는 빛을 바란다고 생각합니다. 신입의 열정과 도전정신을 깊숙히 새기며 배움에 있어 겸손함을 유지하며 세부적인 곳까지 파고드는 개발자가 되겠습니다.</p>
+          </div>
+          <div class="portcircle"><p>PORTFOILO</p></div>
+          <div class="intro__edesc">
+           <p> I think that if you work hard and enjoy anything, the result will shine. I will become a developer who deeply engraves the passion and challenging spirit of a newcomer, maintains humility in learning, and digs into details.</p>
           </div>
         </section>
-        <section id="section2">2</section>
-        <section id="section3"></section>
-        <section id="section4"></section>
-        <section id="section5"></section>
-        <section id="section6"></section>
-        <section id="section7"></section>
+
+        <section id="section2">
+          <div class="intro__text">
+            IAM
+            <em>FRONTEND</em>
+            <span>DEVELOPER</span>
+          </div>
+        </section>
+        <section id="section3">
+          <div class="profile"><img src="/assets/myintro-67e12852.jpg" alt="프로필사진"></div>
+          <div class="profile__info">
+            <desc>안녕하세요.  신입 웹  퍼블리셔 <em>김현빈</em> 입니다.<br>   
+              저는 디자인을 전공하였고 많은 흥미를 느꼈습니다. 하지만 웹에 있어 디자인만으로는 웹을 만드는것과 전혀 다르단걸 느끼고 코딩 공부를시작 했습니다. 
+              디자인과 코딩을 배움으로써 디자이너와 퍼블리셔, 개발자 각각의 입장을 느끼는 동시에 두 분야가 나눠져 있지만 또 그렇지도 않다고 많이 느꼈습니다.
+              저에게 있어 디자인과 코딩 둘 다 상상한것을 현실로 만드는 매력적인 일이라고 생각합니다.
+              </desc>
+              <p>Hello, I am Hyunbin Kim, a new web publisher.I majored in design and found it very interesting. However, I started studying coding because I felt that designing on the web is completely different from creating a web.By learning design and coding, I felt the position of designers, publishers, and developers, and at the same time, the two fields were divided, but I felt that it was not so.For me, I think both design and coding are fascinating jobs that make imagination a reality.</p>
+          </div>
+        </section>
+        <section id="section4">
+          <span class="textdeco">webstandard</span>
+        </section>
+        <section id="section5">5</section>
+        <section id="section6">6</section>
+        <section id="section7">7</section>
       </main>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+
     <script>
         const horizon = document.querySelector("#horizontality");
         const section = gsap.utils.toArray("#horizontality > section");
+        const lenis = new Lenis()
+
+        lenis.on('scroll', (e) => {
+        console.log(e)
+        })
+
+        function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+
+        let proxy = { skew: 0 },
+        skewSetter = gsap.quickSetter(".parallax__item__img", "skewY", "deg"), // fast
+        clamp = gsap.utils.clamp(-20, 20);
+        //ㅅ무스?
+
 
         gsap.to(section,{
             xPercent: -100 * (section.length - 1),
@@ -40,17 +87,17 @@
             scrollTrigger: {
                 trigger: horizon,
                 start: "top top",
-                end: () => "+=" + (horizon.offsetWidth - innerWidth),
+                end: () => "+=" + (horizon.offsetWidth),
                 pin: true,
                 anticipatePin:1,
                 scrub:1,
-                snap : {
-                    snapTo: 1/(section.length - 1),
-                    inertoa: false,
-                    duration: {min:0.1, max: 0.1}
-                },
-                invalidateOnRefresh: true
-
+                // snap : {
+                //     snapTo: 1/(section.length - 1),
+                //     inertoa: true,
+                //     duration: {min:0.1, max: 0.1}
+                // },
+                invalidateOnRefresh: true,
+                markers: true
             }
         })
 
