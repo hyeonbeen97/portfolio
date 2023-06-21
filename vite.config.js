@@ -1,3 +1,7 @@
 export default {
-    root: "src"
+    root: "src",
+    build: {
+        outDir: "../public",
+    },
+    
 };
