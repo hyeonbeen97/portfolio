@@ -92,34 +92,29 @@
         //ㅅ무스?
 
 
-        gsap.to(section,{
+        let scrollTween = gsap.to(section, {
             xPercent: -100 * (section.length - 1),
             ease: "none",
             scrollTrigger: {
                 trigger: horizon,
                 start: "top top",
                 end: () => "+=" + (horizon.offsetWidth - innerWidth),
-                pin: true,
-                anticipatePin:1,
-                scrub:1,
-                // snap : {
-                //     snapTo: 1/(section.length - 1),
-                //     inertoa: true,
-                //     duration: {min:0.1, max: 0.1}
-                // },
-                invalidateOnRefresh: true,
+                anticipatePin: 1,   // 핀을 부드럽게 해주는 효과
+                scrub: 1,
+                invalidateOnRefresh: true   // 새로고침 시 부드럽게 해주는 효과
             }
         })
 
         gsap.to(".intro__text", {
-            y: -200,
             duration: 2,
             ease: "elastic",
+            opacity: 0,            
             scrollTrigger: {
                 trigger: ".intro__text",
-                start: "left center",
+                start: "left left",
+                end: "right 50%",  
+                horizontal: true,
                 scrub: 1,
-                toggleActions: "play none reverse none",
                 markers: true,
                 id: "intro__text"
             }
